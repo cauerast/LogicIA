@@ -1,0 +1,19 @@
+Hello there, :)
+
+create the virtual environment
+    py -m venv .venv
+
+instal the dependences in virtual environment:
+    py -m pip install fastapi uvicorn python-dotenv python-multipart 
+
+if needs:
+    py -m pip install sqlalchemy alembic bcrypt=4.0.1 passlib[bcrypt] python-jose[cryptography] 
+
+to run the project:
+    py -m uvicorn main:app --reload
+
+to change anything in db (use alembic) 
+    (to do a migration) = changes
+    alembic init alembic # create a folder with alembic dependences
+    alembic revision --autogenerate -m "{message}" # create a new migration
+    alembic upgrade head # apply the migration to the database
