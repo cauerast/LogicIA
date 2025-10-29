@@ -1,8 +1,26 @@
 from fastapi import APIRouter, HTTPException
 from schemas import TranslationRequest
+import re
 
 # home router
 home_router = APIRouter(prefix="/translate", tags=["Translate"])
+
+# Translate Dicts
+NL_TO_CPC = {
+    r"\b e \b": " ∧ ",
+    r"\b ou \b": " v ",
+    r"\b nao\b|\b não\b": " ¬ ",
+    r"\bse\b.*\bentao\b|\bentão\b": " → ",
+    r"\bse e somente se\b|\bsomente se\b": " ↔ ",
+}
+
+CPC_TO_NL = {
+    "∧": "e",
+    "v": "ou",
+    "¬": "não",
+    "→": "então",
+    "↔": "se e somente se"
+}
 
 # home endpoint
 @home_router.get("/")
