@@ -29,8 +29,8 @@ async def home():
         "message": "Welcome to LogicIA! ",
         "description": "Translation of logical propositions CPC ↔ NL.",
         "routes": {
-            "nl_to_cpc": "/home/nl-to-cpc",
-            "cpc_to_nl": "/home/cpc-to-nl"
+            "nl_to_cpc": "/translate/nl_to_cpc",
+            "cpc_to_nl": "/translate/cpc_to_nl"
         }
     }
 
