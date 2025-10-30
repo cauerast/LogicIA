@@ -1,0 +1,5 @@
+- spacy install c++ 
+- implements spacy functions
+- change functions
+- (implements spacy w/ (~) and (bi)conditionals)
+

@@ -13,11 +13,11 @@ NL_TO_CPC = {
 }
 
 CPC_TO_NL = {
-    "∧": "e",
-    "v": "ou",
-    "¬": "não",
-    "→": "então",
-    "↔": "se e somente se"
+    r"∧|\^": "e",
+    r"v|V": "ou",
+    r"¬|~": "não",
+    r"→": "então",
+    r"↔": "se e somente se"
 }
 
 # translate functions
@@ -64,8 +64,9 @@ def translate_cpc_to_nl(text: str, user_props: dict = None) -> dict:
         result_text = re.sub(rf"\b{prop}\b", meaning, result_text)
 
     # Substitui operadores lógicos
-    for symbol, meaning in CPC_TO_NL.items():
-        result_text = result_text.replace(symbol, f" {meaning} ")
+    for pattern, meaning in CPC_TO_NL.items():
+        result_text = re.sub(pattern, f"{meaning}", result_text)
+
 
     return {
         "natural_language": result_text.strip(),

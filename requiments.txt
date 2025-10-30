@@ -7,7 +7,7 @@ instal the dependences in virtual environment:
     py -m pip install fastapi uvicorn python-dotenv python-multipart spacy
 
 if needs:
-    py -m pip install sqlalchemy alembic bcrypt=4.0.1 passlib[bcrypt] python-jose[cryptography] 
+    - spacy requiments
 
 to run the project:
     py -m uvicorn main:app --reload
