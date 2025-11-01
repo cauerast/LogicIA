@@ -46,7 +46,7 @@ def extract_propositions(text: str) -> list:
     clean_text = re.sub(r"[.,!?]", "", text.lower())
 
     # Divide o texto por conectivos conhecidos
-    parts = re.split(r"\b e \b|\btambem\b|\btambém\b|\b ou \b|\b nao \b|\b não \b|\bse\b.*\bentao\b|\bentão\b|\bse e somente se\b|\bsomente se\b", clean_text)
+    parts = re.split(r"\b e \b|\btambem\b|\btambém\b|\b ou \b|\bnao\b|\bnão\b|\bse\b.*\bentao\b|\bentão\b|\bse e somente se\b|\bsomente se\b", clean_text)
 
     # Limpa espaços e remove strings vazias
     return [p.strip() for p in parts if p.strip()]
