@@ -12,14 +12,14 @@ home_router = APIRouter(prefix="/translate", tags=["Translate"])
 NL_TO_CPC = {
     r"\b e \b|\btambem\b|\btambém\b": " ∧ ",
     r"\b ou \b": " v ",
-    r"\b nao \b|\b não \b": " ¬ ",
+    r"\bnao\b|\bnão\b": "¬",
     r"\bse\b.*\bentao\b|\bentão\b": " → ",
     r"\bse e somente se\b|\bsomente se\b": " ↔ ",
 }
 
 CPC_TO_NL = {
     r"∧|\^": "e",
-    r"V": "ou",
+    r"V|v": "ou",
     r"¬|~": "não",
     r"→": "então",
     r"↔": "se e somente se"
@@ -97,7 +97,7 @@ def translate_cpc_to_nl(text: str, user_props: dict = None) -> dict:
 
     # Substitui operadores lógicos
     for pattern, meaning in CPC_TO_NL.items():
-        result_text = re.sub(pattern, f" {meaning} ", result_text)
+        result_text = re.sub(pattern, f"{meaning}", result_text)
 
     return {
         "natural_language": result_text.strip(),
