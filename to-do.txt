@@ -1,4 +1,5 @@
 - spacy install c++ 
+- https://huggingface.co/
 - implements spacy functions
 - change functions
 - (implements spacy w/ (~) and (bi)conditionals)

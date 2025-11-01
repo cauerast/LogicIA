@@ -3,7 +3,7 @@ Hello there, :)
 create the virtual environment
     py -m venv .venv
 
-instal the dependences in virtual environment:
+install the dependences in virtual environment:
     py -m pip install fastapi uvicorn python-dotenv python-multipart spacy
 
 if needs:
