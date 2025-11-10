@@ -12,9 +12,3 @@ if needs:
 
 to run the project:
     py -m uvicorn main:app --reload
-
-to change anything in db (use alembic) 
-    (to do a migration) = changes
-    alembic init alembic # create a folder with alembic dependences
-    alembic revision --autogenerate -m "{message}" # create a new migration
-    alembic upgrade head # apply the migration to the database
