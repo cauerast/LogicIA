@@ -41,7 +41,7 @@ def generate_random_propositions(sentences: list) -> dict:
 
 
 def extract_propositions(text: str) -> list:
-   
+
     # Remove pontuação desnecessária
     clean_text = re.sub(r"[.,!?]", "", text.lower())
 
@@ -67,7 +67,15 @@ def translate_nl_to_cpc(text: str, user_props: dict = None) -> dict:
     if user_props and len(user_props) > 0:
         propositions = user_props
     else:
-        propositions = generate_random_propositions(sentences)
+        random_props = generate_random_propositions(sentences)
+
+        repeated_props_remover = set()
+        propositions = {}
+        for prop, meaning in random_props.items():
+            normalized = meaning.lower().strip()
+            if normalized not in repeated_props_remover:
+                propositions[prop] = meaning
+                repeated_props_remover.add(normalized)
 
     # Substitui proposições por letras (A–T)
     formula = processed
