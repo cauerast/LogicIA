@@ -1,124 +1,102 @@
-from typing import Any
-
-
+import os
+import json
 from fastapi import APIRouter, HTTPException
 from schemas import TranslationRequest
-import re
-import random
+from google import genai
+from dotenv import load_dotenv
+
+load_dotenv()
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+client = genai.Client(api_key=os.environ.get(GEMINI_API_KEY))
+
 
 home_router = APIRouter(prefix="/translate", tags=["Translate"])
 
+def call_ai_translator(text: str, propositions: dict, direction: str = "nl_to_cpc") -> dict:
+   
+    if direction == "nl_to_cpc":
+        prompt = f"""
+        Você é um tradutor de lógica proposicional.
+        Traduza o texto abaixo de Linguagem Natural (NL) para Cálculo Proposicional Clássico (CPC).
 
-NL_TO_CPC = {
-    r"\b e \b|\btambem\b|\btambém\b": " ∧ ",
-    r"\b ou \b": " v ",
-    r"\bnao\b|\bnão\b": "¬",
-    r"\bse\b.*\bentao\b|\bentão\b": " → ",
-    r"\bse e somente se\b|\bsomente se\b": " ↔ ",
-}
+        Texto NL: "{text}"
 
-CPC_TO_NL = {
-    r"∧|\^": "e",
-    r"V|v": "ou",
-    r"¬|~": "não",
-    r"→": "então",
-    r"↔": "se e somente se"
-}
+        Use as seguintes proposições (se fornecidas): {propositions if propositions else "{}"}.
+        Caso não sejam fornecidas, gere automaticamente letras (A, B, C... ate T).
 
+        Regras de mapeamento:
+        "e" / "tambem" / "também" → ∧  
+        "ou" → v  
+        "não" / "nao" → ¬  
+        "se...então" → →  
+        "se e somente se" / "somente se" → ↔  
 
-VALID_LETTERS = list[str]("ABCDEFGHIJKLMNOPQRST")
-
-
-
-def generate_random_propositions(sentences: list) -> dict:
-    available_letters = VALID_LETTERS.copy()
-    random.shuffle(available_letters)
-    propositions = {}
-    for i, sent in enumerate(sentences): # for i in range(len(sentences))
-        if i < len(available_letters):
-            propositions[available_letters[i]] = sent.strip() # sentences[i].strip()
-    return propositions
-
-
-def extract_propositions(text: str) -> list:
-
-    # Remove pontuação desnecessária
-    clean_text = re.sub(r"[.,!?]", "", text.lower())
-
-    # Divide o texto por conectivos conhecidos
-    parts = re.split(r"\b e \b|\btambem\b|\btambém\b|\b ou \b|\bnao\b|\bnão\b|\bse\b.*\bentao\b|\bentão\b|\bse e somente se\b|\bsomente se\b", clean_text)
-
-    # Limpa espaços e remove strings vazias
-    return [p.strip() for p in parts if p.strip()]
-
-
-
-def translate_nl_to_cpc(text: str, user_props: dict = None) -> dict:
-    processed = text.lower()
-
-    # Substitui conectivos por símbolos CPC
-    for pattern, replacement in NL_TO_CPC.items():
-        processed = re.sub(pattern, replacement, processed)
-
-    # Extrai proposições simples automaticamente
-    sentences = extract_propositions(text)
-
-    # Usa as proposições fornecidas ou gera automaticamente
-    if user_props and len(user_props) > 0:
-        propositions = user_props
+        Retorne APENAS um JSON válido neste formato exato:
+        {{
+          "formula": "A ∧ B v ¬C",
+          "propositions": {{
+            "A": "texto da primeira proposição",
+            "B": "texto da segunda proposição",
+            "C": "texto da terceira proposição"
+          }}
+        }}
+        """
     else:
-        random_props = generate_random_propositions(sentences)
+        prompt = f"""
+        Você é um tradutor de lógica proposicional.
+        Traduza o texto abaixo de Cálculo Proposicional Clássico (CPC) para Linguagem Natural (NL).
 
-        repeated_props_remover = set()
-        propositions = {}
-        for prop, meaning in random_props.items():
-            normalized = meaning.lower().strip()
-            if normalized not in repeated_props_remover:
-                propositions[prop] = meaning
-                repeated_props_remover.add(normalized)
+        Texto CPC: "{text}"
 
-    # Substitui proposições por letras (A–T)
-    formula = processed
-    for prop, meaning in propositions.items():
-        # Evita substituir dentro de palavras
-        formula = re.sub(re.escape(meaning.lower()), prop, formula)
+        Use os seguintes significados de proposições (se fornecidos): {propositions if propositions else "{}"}.
+        Caso não sejam fornecidos, gere significados genéricos como "Significado de A", etc.
 
-    return {
-        "formula": formula.strip(),
-        "propositions": propositions
-    }
+        Regras de mapeamento inversas:
+        ∧ → e  
+        v → ou  
+        ¬ → não  
+        → → então  
+        ↔ → se e somente se  
+
+        Retorne APENAS um JSON válido neste formato exato:
+        {{
+          "natural_language": "texto traduzido",
+          "propositions": {{
+            "A": "significado da proposição A",
+            "B": "significado da proposição B"
+          }}
+        }}
+        """
+
+    try:
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=prompt
+        )
+
+        raw_text = response.text.strip()
+
+        # Tenta extrair apenas o JSON
+        json_start = raw_text.find("{")
+        json_end = raw_text.rfind("}") + 1
+        json_str = raw_text[json_start:json_end]
+
+        parsed = json.loads(json_str)
+        return parsed
+
+    except Exception as e:
+        return {
+            "error": f"Erro ao processar a resposta: {str(e)}",
+            "raw_response": response.text if 'response' in locals() else None
+        }
 
 
 
-def translate_cpc_to_nl(text: str, user_props: dict = None) -> dict:
-    # Detecta proposições existentes (A–T)
-    props_found = sorted(set[Any](re.findall(r"\b[A-T]\b", text)))
-
-    # Se o usuário não informou, cria significados padrão
-    if not user_props:
-        user_props = {p: f"Significado de {p}" for p in props_found}
-
-    # Substitui proposições pelos significados
-    result_text = text
-    for prop, meaning in user_props.items():
-        result_text = re.sub(rf"\b{prop}\b", meaning, result_text)
-
-    # Substitui operadores lógicos
-    for pattern, meaning in CPC_TO_NL.items():
-        result_text = re.sub(pattern, f"{meaning}", result_text)
-
-    return {
-        "natural_language": result_text.strip(),
-        "propositions": user_props
-    }
-
-
-# ==== Routes ====
 @home_router.get("/")
 async def home():
     return {
         "message": "Welcome to LogicIA!",
-        "description": "Translation of logical propositions CPC ↔ NL (A–T only).",
+        "description": "Translation of logical propositions CPC ↔ NL (A-T only).",
         "routes": {
             "nl_to_cpc": "/translate/nl_to_cpc",
             "cpc_to_nl": "/translate/cpc_to_nl"
@@ -130,8 +108,8 @@ async def home():
 async def nl_to_cpc(payload: TranslationRequest):
     if not payload.text or payload.text.strip() == "":
         raise HTTPException(status_code=400, detail="Texto vazio não pode ser traduzido.")
-    
-    translated = translate_nl_to_cpc(payload.text, payload.propositions)
+
+    translated = call_ai_translator(payload.text, payload.propositions, direction="nl_to_cpc")
 
     return {
         "original": payload.text,
@@ -144,7 +122,7 @@ async def cpc_to_nl(payload: TranslationRequest):
     if not payload.text or payload.text.strip() == "":
         raise HTTPException(status_code=400, detail="Texto vazio não pode ser traduzido.")
 
-    translated = translate_cpc_to_nl(payload.text, payload.propositions)
+    translated = call_ai_translator(payload.text, payload.propositions, direction="cpc_to_nl")
 
     return {
         "original": payload.text,
