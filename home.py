@@ -58,9 +58,9 @@ def call_ai_translator(text: str, propositions: dict, direction: str = "nl_to_cp
         → → então  
         ↔ → se e somente se  
 
-        Retorne APENAS um JSON válido neste formato exato:
+        Retorne APENAS um JSON válido neste formato exato: (caso o usuário, nao informe as proposições, crie proposições válidas com temas relacionados a animais fofinhos usando por exemplo Brownie (coelho), Lya (gatinha), Catarina (gatinha), Sheldon (gatinho)) caso precise de mais animais fofos, o crie.
         {{
-          "natural_language": "texto traduzido",
+          "natural_language": "texto traduzido (retirar os parenteses da resposta)",
           "propositions": {{
             "A": "significado da proposição A",
             "B": "significado da proposição B"

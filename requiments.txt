@@ -4,7 +4,7 @@ create the virtual environment
     py -m venv .venv
 
 install the dependences in virtual environment:
-    py -m pip install fastapi uvicorn python-dotenv python-multipart spacy
+    py -m pip install fastapi uvicorn python-dotenv python-multipart 
     py -m pip install -q -U google-genai
 
 if needs:
