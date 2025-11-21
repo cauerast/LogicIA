@@ -12,7 +12,7 @@
   "dependencies": {
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-router-dom": "^7.9.5"
+    "react-router-dom": "^7.9.6"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
@@ -24,5 +24,10 @@
     "eslint-plugin-react-refresh": "^0.4.22",
     "globals": "^16.4.0",
     "vite": "^7.1.7"
-  }
+  },
+  "description": "LogicIA é um projeto inovador que transforma **Linguagem Natural (NL)** em **Linguagem de Programação(CPC)** e vice-versa. Ele foi criado para facilitar a comunicação de humanos e sistemas, tornando a interpretação mais fácil e rápida.",
+  "main": "eslint.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

@@ -42,7 +42,7 @@
   width: 100%;
   background-color: transparent;
   position: relative;
-  z-index: 3; /* acima da box e das imagens */
+  z-index: 3; 
 }
 
 .containerTexts {
@@ -89,19 +89,20 @@
 }
 
 /* =========== INTRODUCTION =============== */
+
 .boxInt {
   display: flex;
+  align-items: flex-start;
+  margin: 20px 40px -100px 0px;
+  padding: 20px; 
 }
 
 .containerInt {
   background-color: #F2E6D8;
-  max-width: 800px;
-  width: 70%;
-  height: 150px;
-  margin-top: 70px;
-  margin-left: -25px;
+  margin: 70px 0px 0px 0px;
   border-radius: 10px;
-  padding: 10px;
+  padding: 15px;
+  margin-bottom: 10px;
   font-weight: 400;
 }
 
@@ -112,22 +113,22 @@
 
 .paragrafo {
   margin-top: 10px;
-  text-align: justify;
+  text-align: left;
 }
 
 .containerButtonInt {
-  margin-top: -25px;
+  margin-top: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 50px;
+  gap: 35px;
   flex-direction: column;
 }
 
 .btnInt {
-  background-color: #FFDD60;
+  background-color: #598DCF;
+  color: #FFFFFF;
   opacity: 0.8;
-  color: #000;
   font-weight: 500;
   padding: 5px 75px;
   font-size: 1.5rem;
@@ -152,9 +153,9 @@
 .containerModo {
   margin-left: 25px;
   margin-top: 15px;
-  max-width: 150px;
+  max-width: 111px;
   height: 35px;
-  border: 2.5px solid #FFD53C;
+  border: 2.5px solid #598DCF;
   border-radius: 8px;
   display: flex;
   padding-left: 15px;
@@ -172,7 +173,7 @@
   width: 80%;
   padding: 12px;
   font-size: 16px;
-  border: 2.5px solid #7062D4;
+  border: 2.5px solid #598DCF;
   border-radius: 8px;
   outline: none;
   margin-left: 25px;
@@ -180,7 +181,7 @@
 }
 
 .nlInput:focus {
-  border-color: #8A6D3B; /* muda se quiser */
+  border-color: #224777; /* muda se quiser */
 }
 
 .containerButtonNL {
@@ -213,6 +214,61 @@
   margin-top: 50px;
   gap: 50px;
 }
+
+.cpcText {
+  font-weight: 800;
+  font-size: 1.2rem;
+  margin-top: 50px;
+  margin-left: 25px;
+}
+
+.cpcInput {
+  width: 80%;
+  padding: 12px;
+  font-size: 16px;
+  border: 2.5px solid #7062D4;
+  border-radius: 8px;
+  outline: none;
+  margin-left: 25px;
+  margin-top: 15px;
+}
+
+.cpcInput:focus {
+  border-color: #8A6D3B; /* muda se quiser */
+}
+
+.containerButtonCPC {
+  display: flex;
+  justify-content: center;
+  gap: 75px;
+  margin-top: 75px;
+}
+
+.cpcButton {
+  background-color: #598DCF;
+  color: #FFF;
+  font-weight: 800;
+  text-align: center;
+  width: 275px;
+  height: 50px;
+  border-radius: 7px;
+  border: none;
+  font-size: 1.2rem;
+}
+
+.cpcButton:hover {
+  transform: translateY(-2px);
+  background-color: #3974BF;
+}
+
+.containerRespostaCPC {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 50px;
+  gap: 50px;
+}
+
+
 
 .telesResposta {
   transform: scale(0.4);

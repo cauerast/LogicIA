@@ -21,7 +21,7 @@ function Introduction() {
         <div className="boxInt">
           <img src={Teles} alt="Teles" className="telesInt" />
           <div className="containerInt">
-            <p className="saudacao">
+            <p className="paragrafo">
               Olá! Eu sou o Teles, o mascote da LogicIA! 🧠
             </p>
             <p className="paragrafo">
