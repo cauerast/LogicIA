@@ -8,9 +8,29 @@ function NL() {
   const [showContent, setShowContent] = useState(false);
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    setShowContent(true);
-  };
+  const handleClick = async () => {
+    try{
+      const frase = document.getElementById("frase").value
+      const data = await fetch("http://127.0.0.1:8000/translate/nl_to_cpc", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          text: `${frase}`,
+          propositions: {}
+        })
+      })
+      const response = data.json()
+      let container = document.getElementById("response")
+      let p = document.createElement("p")
+      p.textContent = response.translated.formula
+      container.appendChild(p)
+    } catch(erro){
+      console.log(erro)
+    }
+    setShowContent(true)
+  }
 
   const handleNavigate = () => {
     navigate("/introduction");
@@ -35,6 +55,7 @@ function NL() {
           type="text"
           className="nlInput"
           placeholder="Digite aqui..."
+          id="frase"
         />
 
         <div className="containerButtonNL">
@@ -55,8 +76,8 @@ function NL() {
 
             <div className="solucaoContainer">
               <h2 className="solucaoTitle">SOLUÇÃO</h2>
-              <div className="solucaoBox">
-                <p>A fórmula em CPC é: ............................................................</p>
+              <div className="solucaoBox" id="response">
+                
               </div>
             </div>
           </div>
