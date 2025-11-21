@@ -4,8 +4,8 @@ create the virtual environment
     py -m venv .venv
 
 install the dependences in virtual environment (Front-End) -> (./App/):
-    node init -y
-    node install react-router-dom
+    npm init -y
+    npm install react-router-dom
     node install (create node_modules)
 
 install the dependences in virtual environment (Back-End):
