@@ -3,14 +3,14 @@ Hello there, :)
 create the virtual environment
     py -m venv .venv
 
-install the dependences in virtual environment (Front-End) -> (./App/):
-    npm init -y
-    npm install react-router-dom
-    node install (create node_modules)
-
 install the dependences in virtual environment (Back-End):
     py -m pip install fastapi uvicorn python-dotenv python-multipart 
     py -m pip install -q -U google-genai
+    
+install the dependences in virtual environment (Front-End) -> (./App/):
+    npm init -y
+    npm install react-router-dom
+    npm install (create node_modules)
 
 to run the project:
     py -m uvicorn main:app --reload
