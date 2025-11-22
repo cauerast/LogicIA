@@ -18,8 +18,11 @@ LogicIA is an intelligent translator that converts **natural language (NL)** sen
 It uses:
 
 - **FastAPI (Python)** as backend  
+
 - **Google Gemini 2.5 Flash** for AI-powered translation  
+
 - **Regex fallback logic**  
+
 - **React + Vite** as frontend  
 
 Language support is universal because AI handles the translation layer.
@@ -30,8 +33,11 @@ Language support is universal because AI handles the translation layer.
 
 ### NL → CPC
 - Extracts propositions automatically  
+
 - Generates proposition letters (A–T)  
+
 - Accepts user-provided propositions  
+
 - Detects logical connectors:  
 
 | Natural Language | Symbol |
@@ -47,11 +53,16 @@ Language support is universal because AI handles the translation layer.
 ### CPC → NL
 - Converts logic symbols into natural-language expressions  
 - Generates meaning for each proposition  
-- If meanings are missing → **automatically invents cute-animal propositions**:  
-  - Brownie (rabbit)  
+- If meanings are missing → **automatically invents cute-animal propositions and retrun respective nl :)**
+
+  - Brownie (rabbit) 
+
   - Lya (cat)  
+
   - Catarina (cat)  
+
   - Sheldon (cat)
+
 
 ---
 
@@ -85,7 +96,7 @@ LOGICIA/
 ├── README.md                     # This documentation
 └── .env
 ```
-
+---
 # Installation 
 
 ### 1️. Clone the repository
@@ -118,7 +129,7 @@ uvicorn main:app --reload
 ```
 ### Avaliable at FastAPI → http://localhost:8000/docs
 
-
+---
 # Frontend Setup (React)
 
 ```
@@ -127,30 +138,49 @@ npm install
 npm run dev
 ```
 ### Your interface will be available at: http://localhost:5173
-
+---
 # POST /translate/nl_to_cpc
 (photo)
-
+---
 # POST /translate/cpc_to_nl
+ - If propositions are missing, the backend auto-generates cute-animal statements :)
 (photo)
-### If propositions are missing, the backend auto-generates cute-animal statements :)
+---
+# AI Logic and Convertions
 
-# AI Logic
-### NL → CPC Flow
+### 1. NL → CPC (Natural Language to Classical Propositional Calculus)
 
-- Extract propositions
-- Clean text
-- Assign letters A–T
-- Replace operators
-- Generate CPC formula
-- Return strict JSON only
+- The user provides a sentence in natural language (any language)
+- The backend constructs a structured prompt with explicit mapping rules for the AI model.
+- The LLM (Gemini) identifies propositions, assigns letters from **A to T**, and applies logical operators based on the mapping rules:
+  - `"and" / "e" / "também" / "tambem"` → `∧`
+  - `"or" / "ou"` → `v`
+  - `"not" / "não" / "nao"` → `¬`
+  - `"if ... then"` → `→`
+  - `"if and only if" / "se e somente se" / "somente se"` → `↔`
+- After interpreting and structuring the logical formula, the model returns a strict JSON object containing:
+  - The generated formula  
+  - All mapped propositions  
+- This JSON is consumed by the frontend and displayed to the user.
 
-### CPC → NL Flow
-- Interpret propositional letters
-- Replace operators
-- Auto-generate meanings if missing
-- Return strict JSON only
+---
 
+### 2. CPC → NL (Classical Propositional Calculus to Natural Language)
+
+- The user provides a logical formula using CPC notation. Proposition meanings may be included but are optional.
+- The backend sends a prompt instructing the LLM to convert symbols back into natural-language expressions:
+  - `∧` → `"and"`
+  - `v` → `"or"`
+  - `¬` → `"not"`
+  - `→` → `"then"`
+  - `↔` → `"if and only if"`
+- If the user does not provide proposition meanings, the system automatically generates friendly descriptions using “cute animal” themes (e.g., Brownie the rabbit, Lya the cat, Catarina the cat, Sheldon the cat).
+- The model returns a JSON object containing:
+  - The natural-language translation  
+  - The full set of generated or provided propositions  
+- The frontend formats and displays the result to the user.
+
+---
 # License
 
 ### MIT License -free for personal, academic, or commercial use.
