@@ -2,7 +2,7 @@
 **Natural Language ⇄ Classical Propositional Logic**  
 Fully supports **any language** (English, Portuguese, Spanish, etc.)
 
-[Overview](#overview) • [Features](#features) • [Project-Structure](#project-structure) • [Installation](#installation) • [Frontend-Setup](#frontend-setup-react) • [API](#post-translatenl_to_cpc) • [AI-Logic](#-ai-logic) • [License](#license)
+[Overview](#overview) • [Features](#features) • [Project-Structure](#project-structure) • [Installation](#installation) • [Frontend-Setup](#frontend-setup-react) • [API](#post-translatenl_to_cpc) • [AI-Logic-And-Convertions](#ai-logic-and-convertions) • [License](#license)
 
 ![Python](https://img.shields.io/badge/Python-3.11+-blue.svg?style=flat-square&logo=python)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-009688.svg?style=flat-square&logo=fastapi)
