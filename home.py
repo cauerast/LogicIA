@@ -31,7 +31,7 @@ def call_ai_translator(text: str, propositions: dict, direction: str = "nl_to_cp
         "se...então" → →  
         "se e somente se" / "somente se" → ↔  
 
-        Retorne APENAS um JSON válido neste formato exato:
+        Retorne APENAS um JSON válido neste formato exato: Caso o usuario nao informar nada nos campos ou informar qualquer coisa que seja diferente de um texto para tradução, retorne "". Voce é um programa que só traduz.
         {{
           "formula": "A ∧ B v ¬C",
           "propositions": {{
@@ -58,7 +58,7 @@ def call_ai_translator(text: str, propositions: dict, direction: str = "nl_to_cp
         → → então  
         ↔ → se e somente se  
 
-        Retorne APENAS um JSON válido neste formato exato: (caso o usuário, nao informe as proposições, crie proposições válidas com temas relacionados a animais fofinhos usando por exemplo Brownie (coelho), Lya (gatinha), Catarina (gatinha), Sheldon (gatinho)) caso precise de mais animais fofos, o crie.
+        Retorne APENAS um JSON válido neste formato exato: (caso o usuário, nao informe as proposições, crie proposições válidas com temas relacionados a animais fofinhos usando por exemplo Brownie (coelho), Lya (gatinha), Catarina (gatinha), Sheldon (gatinho)) caso precise de mais animais fofos, o crie. Caso o usuario nao informar nada nos campos ou informar qualquer coisa que seja diferente de um texto para tradução, retorne "". Voce é um programa que só traduz.
         {{
           "natural_language": "texto traduzido (retirar os parenteses da resposta)",
           "propositions": {{
