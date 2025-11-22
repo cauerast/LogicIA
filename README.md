@@ -1,6 +1,5 @@
 # LogicIA - NL ↔ CPC Translator  
 **Natural Language ⇄ Classical Propositional Logic**  
-Fully supports **any language** (English, Portuguese, Spanish, etc.)
 
 [Overview](#overview) • [Features](#features) • [Project-Structure](#project-structure) • [Installation](#installation) • [Frontend-Setup](#frontend-setup-react) • [API](#post-translatenl_to_cpc) • [AI-Logic-And-Convertions](#ai-logic-and-convertions) • [License](#license)
 
