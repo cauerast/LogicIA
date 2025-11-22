@@ -52,10 +52,10 @@ function NL() {
 
   return (
     <section>
-      <Box style={{ height: "425px" }}>
+      <Box style={{ height: "400px" }}>
         <p className="modo">MODO</p>
 
-        <div className="containerModo">NL → CPC</div>
+        <button className="containerModo" onClick={handleNavigate}>NL → CPC</button>
 
         <p className="nlText">ESCREVA A SENTENÇA EM LINGUAGEM NATURAL:</p>
 
@@ -69,10 +69,6 @@ function NL() {
         <div className="containerButtonNL">
           <button className="nlButton" onClick={handleClick}>
             MOSTRAR RESULTADO
-          </button>
-
-          <button className="nlButton" onClick={handleNavigate}>
-            ALTERAR MODO
           </button>
         </div>
       </Box>

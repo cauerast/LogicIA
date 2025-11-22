@@ -41,7 +41,6 @@
   justify-content: center;
   width: 100%;
   background-color: transparent;
-  position: relative;
   z-index: 3; 
 }
 
@@ -89,7 +88,6 @@
 }
 
 /* =========== INTRODUCTION =============== */
-
 .boxInt {
   display: flex;
   align-items: flex-start;
@@ -99,7 +97,7 @@
 
 .containerInt {
   background-color: #F2E6D8;
-  margin: 70px 0px 0px 0px;
+  margin: 70px 140px 0px 0px;
   border-radius: 10px;
   padding: 15px;
   margin-bottom: 10px;
@@ -112,32 +110,33 @@
 }
 
 .paragrafo {
-  margin-top: 10px;
   text-align: left;
+  margin-top: 10px;
 }
 
 .containerButtonInt {
-  margin-top: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 35px;
-  flex-direction: column;
+  gap: 75px;
+  flex-direction: row;
 }
 
 .btnInt {
+  padding: 12px 80px;
   background-color: #598DCF;
-  color: #FFFFFF;
-  opacity: 0.8;
-  font-weight: 500;
-  padding: 5px 75px;
-  font-size: 1.5rem;
+  color: #FFF;
+  font-size: 1.3rem;
+  font-weight: bold;
+  border-radius: 12px;
   border: none;
-  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
 }
 
 .btnInt:hover {
   opacity: 1;
+  background-color: #417ec0;
   transform: translateY(-2px);
 }
 
@@ -150,17 +149,29 @@
   margin-left: 25px;
 }
 
-.containerModo {
+.containerModo{
+  background-color: #598DCF;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 1.2rem;
+  justify-content: center;
+  border-radius: 7px;
   margin-left: 25px;
   margin-top: 15px;
-  max-width: 111px;
-  height: 35px;
-  border: 2.5px solid #598DCF;
-  border-radius: 8px;
+  height: 40px;
+  width: 130px;
+  border: none;
   display: flex;
-  padding-left: 15px;
   align-items: center;
+  transition: 0.2s ease-in-out;
 }
+
+.containerModo:hover{
+  opacity: 1;
+  background-color: #417ec0;
+  transform: translateY(-2px);
+}
+
 
 .nlText {
   font-weight: 800;
@@ -170,14 +181,14 @@
 }
 
 .nlInput {
-  width: 80%;
+  width: 95%;
   padding: 12px;
   font-size: 16px;
   border: 2.5px solid #598DCF;
   border-radius: 8px;
   outline: none;
+  margin: auto;
   margin-left: 25px;
-  margin-top: 15px;
 }
 
 .nlInput:focus {
@@ -201,11 +212,13 @@
   border-radius: 7px;
   border: none;
   font-size: 1.2rem;
+  transition: 0.2s ease-in-out;
 }
 
 .nlButton:hover {
+  opacity: 1;
+  background-color: #417ec0;
   transform: translateY(-2px);
-  background-color: #3974BF;
 }
 
 .containerRespostaNL {
@@ -223,18 +236,18 @@
 }
 
 .cpcInput {
-  width: 80%;
+  width: 95%;
   padding: 12px;
   font-size: 16px;
-  border: 2.5px solid #7062D4;
+  border: 2.5px solid #598DCF;
   border-radius: 8px;
   outline: none;
+  margin: auto;
   margin-left: 25px;
-  margin-top: 15px;
 }
 
 .cpcInput:focus {
-  border-color: #8A6D3B; /* muda se quiser */
+  border-color: #224777; /* muda se quiser */
 }
 
 .containerButtonCPC {
@@ -247,18 +260,20 @@
 .cpcButton {
   background-color: #598DCF;
   color: #FFF;
-  font-weight: 800;
+  font-weight: bold;
   text-align: center;
   width: 275px;
   height: 50px;
   border-radius: 7px;
   border: none;
   font-size: 1.2rem;
+  transition: 0.2s ease-in-out;
 }
 
 .cpcButton:hover {
+  opacity: 1;
+  background-color: #417ec0;
   transform: translateY(-2px);
-  background-color: #3974BF;
 }
 
 .containerRespostaCPC {
@@ -272,8 +287,7 @@
 
 .telesResposta {
   transform: scale(0.4);
-  margin-top: -125px;
-  margin-left: 200px;
+  margin: -125px 0px 0px 270px;
 }
 
 .solucaoContainer {
@@ -309,6 +323,7 @@
   background-color: #598DCF;
   color: #FFF;
   font-weight: 800;
+  margin-top: 40px;
   padding: 12px 150px;
   border: none;
   border-radius: 10px;

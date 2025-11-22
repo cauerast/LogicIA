@@ -24,13 +24,13 @@ function Home() {
 
         <div className="container">
           <div className="containerTexts">
-            <p className="title">Bem vindo à LogicIA</p>
+            <p className="title">Bem vindo à LogicIA!</p>
             <p className="textWelcome">
-              LogicIA é uma inteligência artificial criada para conectar a 
+              LogicIA é uma inteligência artificial criada para conectar a
               linguagem natural com a linguagem da lógica proposicional. 
               Com ela, você pode transformar frases comuns em expressões 
               do CPC e traduzir fórmulas lógicas de volta para o português, 
-              de forma rápida, clara e intuitiva.
+              de forma rápida e clara!.
             </p>
           </div>
         </div>

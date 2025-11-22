@@ -17,18 +17,20 @@ function Introduction() {
 
   return (
     <section>
-      <Box>
+      <Box style={{ height: "500px" }}>
         <div className="boxInt">
           <img src={Teles} alt="Teles" className="telesInt" />
           <div className="containerInt">
             <p className="paragrafo">
-              Olá! Eu sou o Teles, o mascote da LogicIA! 🧠
+              <strong>Olá! Eu sou o Teles, o mascote da LogicIA!</strong>
             </p>
             <p className="paragrafo">
               Vim para te ajudar nas traduções do CPC (Cálculo Proposicional
-              Clássico) — transformando frases da linguagem natural em lógica
-              formal e vice-versa, de um jeito simples e intuitivo. <strong> Então, por
-              onde começamos?</strong>
+              Clássico), transformando frases da linguagem natural em lógica
+              formal e vice-versa.
+            </p>
+            <p className="paragrafo">
+              Então, por onde começamos?
             </p>
           </div>
         </div>
