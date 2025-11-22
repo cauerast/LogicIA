@@ -1,4 +1,5 @@
 .env
 .gitignore
+.vscode
 __pycache__/
 App/node_modules/
