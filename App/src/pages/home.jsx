@@ -29,7 +29,7 @@ function Home() {
               LogicIA é uma inteligência artificial criada para conectar a
               linguagem natural com a linguagem da lógica proposicional. 
               Com ela, você pode transformar frases comuns em expressões 
-              do CPC e traduzir fórmulas lógicas de volta para o português, 
+              do CPC e traduzir fórmulas lógicas de volta para a linguagem natural, 
               de forma rápida e clara!.
             </p>
           </div>
