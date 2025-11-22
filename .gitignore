@@ -1,5 +1,5 @@
 .env
 .gitignore
-.vscode
+.vscode/
 __pycache__/
 App/node_modules/
