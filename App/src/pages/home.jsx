@@ -15,6 +15,16 @@ function Home() {
     navigate("/introduction");
   }
 
+  const handleClick = async () => {
+    try {
+      const data = (await fetch("https://logicia.onrender.com/translate/")).json()
+      console.log(data)
+
+    } catch (erro) {
+      console.log(erro);
+    }
+  };
+
   return (
     <section>
       <Box>
@@ -36,7 +46,10 @@ function Home() {
         </div>
 
         <div className="containerButton">
-          <button className="btnIniciar" onClick={handleNavigate}>
+          <button className="btnIniciar" onClick={() => {
+            handleClick();
+            handleNavigate();
+          }}>
             Vamos lá!
           </button>
         </div>
