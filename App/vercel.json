@@ -1,0 +1,8 @@
+{
+    "routes": [
+        { "src": "/[^.]+", "dest": "/", "status": 200 },
+        { "src": "/introduction", "dest": "/introduction" },
+        { "src": "/nl", "dest": "/nl" },
+        { "src": "/cpc", "dest": "/cpc" }
+    ]
+}
