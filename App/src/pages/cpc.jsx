@@ -15,7 +15,7 @@ function CPC() {
       const frase = document.getElementById("frase").value;
       const propositions = document.getElementById("propositions").value;
   
-      const data = await fetch("http://127.0.0.1:8000/translate/cpc_to_nl", {
+      const data = await fetch("https://logicia.onrender.com/translate/cpc_to_nl", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

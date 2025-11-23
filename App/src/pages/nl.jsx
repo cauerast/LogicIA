@@ -14,7 +14,7 @@ function NL() {
     try {
       const frase = document.getElementById("frase").value;
   
-      const data = await fetch("http://127.0.0.1:8000/translate/nl_to_cpc", {
+      const data = await fetch("https://logicia.onrender.com/translate/nl_to_cpc", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
