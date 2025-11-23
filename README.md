@@ -157,27 +157,27 @@ npm run dev
 
 # Project Routes
 ## Home
-![Screenshot1](/pics/Home.jpeg)
+![Screenshot1](pics/Home.jpeg)
 
 <br>
 
 ## Introduction
-![Screenshot2](/pics/Introduction.jpeg)
+![Screenshot2](pics/Introduction.jpeg)
 
 <br>
 
 ## NL to CPC
-![Screenshot3](/pics/nltocpcex.jpeg)
-![Screenshot4](/pics/nltocpcex2.jpeg)
+![Screenshot3](pics/nltocpcex.jpeg)
+![Screenshot4](pics/nltocpcex2.jpeg)
 
 <br>
 
 ### CPC to NL
-![Screenshot5](/pics/cpctonlex.jpeg)
+![Screenshot5](pics/cpctonlex.jpeg)
 
 ### If propositions are missing, the backend auto-generates cute-animal statements :)
 
-![Screenshot6](/pics/cpctonlex2.jpeg)
+![Screenshot6](pics/cpctonlex2.jpeg)
 
 <br>
 <br>
