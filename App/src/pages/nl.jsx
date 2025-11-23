@@ -47,7 +47,7 @@ function NL() {
   };
 
   const reiniciar = () => {
-    window.location.reload();
+    navigate("/nl");
   };
 
   return (

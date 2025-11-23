@@ -48,7 +48,7 @@ function CPC() {
   };
 
   const reiniciar = () => {
-    window.location.reload();
+    navigate("/cpc");
   };
 
   return (
