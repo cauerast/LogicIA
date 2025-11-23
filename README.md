@@ -14,6 +14,10 @@
 
 LogicIA is an intelligent translator that converts **natural language (NL)** sentences into **Classical Propositional Calculus (CPC)** formulas - and converts CPC back into natural language.
 
+Try the proect! -> 
+
+-------------------------------------------------- https://logic-ia.vercel.app/ --------------------------------------------------
+
 It uses:
 
 - **FastAPI (Python)** as backend  
