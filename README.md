@@ -16,7 +16,7 @@ LogicIA is an intelligent translator that converts **natural language (NL)** sen
 
 Try the proect! -> 
 
--------------------------------------------------- https://logic-ia.vercel.app/ --------------------------------------------------
+-------------------------------------------------- https://logic-ia.vercel.app/ -------------------------------------------------
 
 It uses:
 
